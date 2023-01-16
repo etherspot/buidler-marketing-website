@@ -1,7 +1,7 @@
 import { ReactComponent as Arrow} from "../../assets/etherspotArrow.svg"
 // import { Etherspot } from "@etherspot/react-transaction-buidler";
 
-const Hero = () => {
+export const Hero = () => {
   return (
     <div className="mx-auto min-h-[100vh] flex justify-center items-center relative text-black dark:text-white">
       <div className="flex justify-between mx-auto w-[85%] relative">
@@ -33,5 +33,3 @@ const Hero = () => {
     </div>
   );
 };
-
-export default Hero;

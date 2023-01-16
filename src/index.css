@@ -10,12 +10,22 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: "TT Interphases";
+  src: url("./fonts/TTInterphases/TTInterphases.ttf");
+  font-weight: 400;
+}
+
 body {
   font-family: "Inter", sans-serif;
 }
 
 .font-graphik {
   font-family: "Graphik";
+}
+
+.font-code {
+  font-family: "TT Interphases";
 }
 
 .custom-navbar {
@@ -45,6 +55,30 @@ body {
   pointer-events: none;
 }
 
+.custom-card {
+  padding: 30px;
+  background: linear-gradient(
+    0deg,
+    rgba(19, 12, 29, 0.8),
+    rgba(19, 12, 29, 0.8)
+  );
+  border-radius: 18px;
+  height: 450px;
+}
+
+.custom-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 1px;
+  background: linear-gradient(180deg, #f79d1e, #ec4942);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 .custom-background-card {
   background: linear-gradient(
     153.97deg,
@@ -55,4 +89,18 @@ body {
   box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(3px);
   border-radius: 16px;
+}
+
+.custom-process-card {
+  background: rgba(12, 9, 21, 0.4);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  min-height: 400px;
+}
+
+.custom-button {
+  background: #2e2e4a;
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.25),
+    inset 2px 2px 2px rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
 }
