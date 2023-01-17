@@ -1,12 +1,12 @@
 export const Batching = () => {
   return (
     <div className="relative">
-      <div className="w-[85%] mx-auto py-8">
+      <div className="md:w-[85%] w-[95%] mx-auto py-8">
         <h2 className="text-center text-[32px] mb-16">
           Transaction batching use-cases
         </h2>
-        <div className="flex justify-center relative items-start">
-          <div className="w-1/2 border-r-[1px] pr-16 border-[#2E2E4A] py-6">
+        <div className="flex justify-center relative items-start flex-wrap">
+          <div className="md:w-1/2 w-full md:border-r-[1px] md:pr-16 border-[#2E2E4A] py-6">
             <h3 className="text-2xl mb-9">Multi-Call Batching</h3>
             <div className="text-[18px]">
               <p className="text-gray-500 mb-6">
@@ -39,7 +39,7 @@ export const Batching = () => {
               </p>
             </div>
           </div>
-          <div className="w-1/2 pl-16 py-6">
+          <div className="md:w-1/2 w-full md:pl-16 py-6">
             <h3 className="text-2xl mb-9">Transaction Bundling</h3>
             <div className="text-[18px]">
               <p className="text-gray-500 mb-6">

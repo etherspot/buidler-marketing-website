@@ -3,7 +3,7 @@ import { BsGithub } from "react-icons/bs";
 
 export const Navbar = () => {
   return (
-    <div className="w-[95%] sticky top-0 mx-auto z-50 flex justify-between items-center custom-navbar">
+    <div className="w-[95%] sticky top-0 mx-auto z-50 hidden md:flex justify-between items-center custom-navbar">
       <div className="font-bold font-graphik text-2xl">BUIDler</div>
       <div className="flex justify-between items-center gap-16">
         <a href="https://google.com">Dev Docs</a>

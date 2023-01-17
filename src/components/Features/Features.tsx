@@ -35,10 +35,10 @@ const sectionTiles = [
 
 export const Features = () => {
   return (
-    <div className="flex justify-between items-stretch w-[90%] mx-auto py-4">
+    <div className="flex justify-between items-stretch md:w-[90%] w-[95%] mx-auto py-4 flex-wrap">
       {sectionTiles.map((tile) => (
         <div
-          className="px-4 py-2 [&:not(:last-child)]:border-r-[1px] dark:border-[#2E2E4A] min-h-[200px] flex-1"
+          className="px-4 py-2 md:[&:not(:last-child)]:border-r-[1px] dark:border-[#2E2E4A] min-h-[200px] md:w-1/5 w-1/2"
           key={tile.title}
         >
           <div className="mb-8 h-11">{tile.icon}</div>

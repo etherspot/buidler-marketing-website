@@ -5,7 +5,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <div className="px-16 border-t-[1px] border-[#2E2E4A] py-10 bg-[#0c0915] bg-opacity-70 flex justify-between items-center">
+    <div className="px-16 border-t-[1px] border-[#2E2E4A] py-10 bg-[#0c0915] bg-opacity-70 flex justify-between items-center md:gap-x-2 gap-y-8 md:flex-row flex-col">
       <div className="flex justify-between items-center gap-2">
         <span>Powered by</span>
         <EtherspotLogo />

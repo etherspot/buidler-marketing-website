@@ -3,8 +3,8 @@ import { ReactComponent as Arrow } from "../../assets/etherspotArrow.svg";
 export const Implementation = () => {
   return (
     <div className="py-8">
-      <div className="flex flex-col w-[85%] mx-auto relative">
-        <div className="flex justify-between gap-12 items-end mb-16">
+      <div className="flex flex-col md:w-[85%] w-[95%] mx-auto relative">
+        <div className="flex justify-between gap-12 items-end md:flex-row flex-col mb-16">
           <h1 className="text-[46px] leading-[50px]">
             BUIDLer <br />
             Implementation
@@ -22,7 +22,7 @@ export const Implementation = () => {
             </p>
           </div>
         </div>
-        <div className="flex gap-6 relative">
+        <div className="flex gap-6 relative md:flex-row flex-col">
           <div className="w-full custom-process-card p-8 flex flex-col">
             <h2 className="text-[32px] mb-4">Install</h2>
             <div className="flex h-full flex-col font-code justify-center gap-y-2 px-8">

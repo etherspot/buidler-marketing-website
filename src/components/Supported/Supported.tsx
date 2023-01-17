@@ -74,9 +74,9 @@ const iconList = [
 
 export const Supported = () => {
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center w-[55%] mx-auto">
+    <div className="min-h-screen relative flex flex-col items-center justify-center md:w-[55%] w-[95%] mx-auto">
       <div className="mb-16">
-        <h1 className="text-center text-[46px]">
+        <h1 className="text-center md:text-[46px] text-[24px]">
           Access all the benefits of
           <span className="text-[#F79D1E]">
             {" "}
