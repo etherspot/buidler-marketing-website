@@ -1,0 +1,23 @@
+import { ReactComponent as DiscordIcon } from "../../assets/discord.svg";
+
+export const Discord = () => {
+  return (
+    <div className="relative py-8">
+      <div className="w-[85%] mx-auto relative">
+        <div className="custom-discord-card w-[60%] mx-auto flex flex-col items-center justify-center gap-16 px-10">
+          <h2 className="text-center text-[#8E8EA8] text-4xl">
+            Have any questions? Join our Discord and chat with the team!
+          </h2>
+          <a
+            href={"https://www.google.com"}
+            target={"_blank"}
+            className="flex justify-center items-center w-[278px] h-[70px] gap-3 border-[#2E2E4A] border-[1px] rounded-[3rem]"
+          >
+            <DiscordIcon />
+            <h4 className="text-[20px] font-bold">Join our discord</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -6,6 +6,9 @@ import { Features } from "./components/Features";
 import { Supported } from "./components/Supported";
 import { Cards } from "./components/Cards";
 import { Implementation } from "./components/Implementation";
+import { Batching } from "./components/Batching";
+import { Discord } from "./components/Discord";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -21,6 +24,9 @@ function App() {
         <Supported />
         <Cards />
         <Implementation />
+        <Batching />
+        <Discord />
+        <Footer />
       </div>
     </div>
   );
