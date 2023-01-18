@@ -5,7 +5,7 @@ import { ReactComponent as EtherspotLogo } from "../../assets/ethSmall.svg";
 export const Navbar = () => {
   return (
     <div className="w-[95%] fixed top-0 left-[50%] translate-x-[-50%] mx-auto z-50 flex justify-between items-center custom-navbar">
-      <div className="font-bold font-graphik text-2xl">BUIDler</div>
+      <div className="font-bold font-graphik text-2xl">BUIDLer</div>
       <div className="flex justify-between items-center gap-16">
         <a href="https://google.com">Dev Docs</a>
         <a href="https://google.com">Implementation</a>

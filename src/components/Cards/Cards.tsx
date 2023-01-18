@@ -19,7 +19,7 @@ export const Cards = () => {
           Direct access for your dApp to Li.Fi, Uniswap, Sushiswap, Quickswap,
           1inch, ParaSwap, HoneySwap, Socket Network, and more.
         </h3>
-        <div className="flex justify-between items-center flex-wrap gap-x-10 gap-y-6 mt-auto">
+        <div className="flex justify-between items-center flex-wrap gap-x-8 gap-y-6 mt-auto w-[80%] mx-auto">
           <CardIconOne />
           <CardIconTwo />
           <CardIconThree />

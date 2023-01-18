@@ -11,7 +11,7 @@ export const Discord = () => {
           <a
             href={"https://www.google.com"}
             target={"_blank"}
-            className="flex justify-center items-center w-[278px] h-[70px] gap-3 border-[#2E2E4A] border-[1px] rounded-[3rem]"
+            className="flex justify-start p-y-2 px-1 items-center w-[278px] h-[70px] gap-3 border-[#2E2E4A] border-[1px] rounded-[3rem]"
           >
             <DiscordIcon />
             <h4 className="text-[20px] font-bold">Join our discord</h4>
