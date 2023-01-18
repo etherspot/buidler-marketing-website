@@ -3,7 +3,8 @@ import { ReactComponent as Arrow} from "../../assets/etherspotArrow.svg"
 
 export const Hero = () => {
   return (
-    <div className="mx-auto min-h-[100vh] flex justify-center items-center relative text-black dark:text-white">
+    <div className="mx-auto min-h-[100vh] flex justify-center items-center relative text-black dark:text-white pt-[120px]">
+      <img src="/ellipse.png" className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" />
       <div className="flex justify-between mx-auto md:w-[85%] w-[95%] md:flex-row flex-col relative">
         <div className="md:w-1/2 w-full relative px-4 pt-16 md:mb-0 mb-[30px]">
           <h1 className="md:text-7xl text-4xl font-semibold mb-16">
@@ -27,6 +28,7 @@ export const Hero = () => {
             <div className="custom-background-card md:min-h-[90vh] min-h-[50vh] p-6 flex flex-col items-center">
                 <h2 className="text-center text-[36px] mb-6">BUIDLer React Component</h2>
                 {/* <div><Etherspot /></div> */}
+                <img src="/etherspotPlaceholder.png" />
             </div>
         </div>
       </div>

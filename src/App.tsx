@@ -13,8 +13,8 @@ import { Footer } from "./components/Footer";
 function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
   return (
-    <div className={`min-h-[100vh] relative ${isDark ? "dark" : ""}`}>
-      <div className="bg-white dark:bg-[#1A0F1E] text-black dark:text-white">
+    <div className={`min-h-[100vh] relative overflow-x-hidden ${isDark ? "dark" : ""}`}>
+      <div className="bg-white dark:bg-[#130C1D] text-black dark:text-white">
         <Navbar />
         <Hero />
         <Features />

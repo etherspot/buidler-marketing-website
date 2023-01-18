@@ -27,7 +27,7 @@ export const Cards = () => {
           <CardIconFive />
           <CardIconSix />
           <CardIconSeven />
-          <CardIconEight />
+          <CardIconEight width={58} />
         </div>
       </div>
       <div className="w-full relative custom-card flex flex-col">

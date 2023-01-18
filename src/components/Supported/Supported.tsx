@@ -68,15 +68,19 @@ const iconList = [
   },
   {
     name: "icon14",
-    icon: <IconThirteen />,
+    icon: <IconFourteen />,
   },
 ];
 
 export const Supported = () => {
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center md:w-[55%] w-[95%] mx-auto">
+    <div className="min-h-screen relative flex flex-col items-center justify-center md:w-[55%] w-[95%] mx-auto z-0 overflow-y-hidden">
+      <img
+        src="/curve.png"
+        className="absolute top-[-20%] left-[50%] translate-x-[-50%] z-[-1] w-[200%]"
+      />
       <div className="mb-16">
-        <h1 className="text-center md:text-[46px] text-[24px]">
+        <h1 className="text-center md:text-[46px] leading-[50px] text-[24px] font-semibold">
           Access all the benefits of
           <span className="text-[#F79D1E]">
             {" "}
@@ -88,7 +92,7 @@ export const Supported = () => {
       <div className="mb-14">
         <p className="text-[#8E8EA8] text-[20px]">Supported on BUIDLer</p>
       </div>
-      <div className="flex justify-center items-center gap-x-16 gap-y-6 flex-wrap">
+      <div className="flex justify-center items-center gap-x-[4.5rem] gap-y-6 flex-wrap">
         {iconList.map((item) => (
           <div key={item.name}>{item.icon}</div>
         ))}
