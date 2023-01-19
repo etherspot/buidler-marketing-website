@@ -11,20 +11,24 @@ export const Footer = () => {
         <EtherspotLogo />
       </div>
       <div className="flex justify-between items-center gap-16">
-        <a href="https://docs.etherspot.dev/">Dev Docs</a>
-        <a href="https://google.com">Blog</a>
+        <a target={"_blank"} href="https://docs.etherspot.dev/">
+          Dev Docs
+        </a>
+        <a target={"_blank"} href="https://etherspot.io/blog/">
+          Blog
+        </a>
       </div>
       <div className="flex justify-between items-center gap-5">
-        <a target={"_blank"} href="https://google.com">
+        <a target={"_blank"} href="https://discord.gg/JHRmWGpP3F">
           <SiDiscord size={21} />
         </a>
-        <a target={"_blank"} href="https://google.com">
+        <a target={"_blank"} href="https://github.com/etherspot/etherspot-sdk">
           <BsGithub size={21} />
         </a>
-        <a target={"_blank"} href="https://google.com">
+        <a target={"_blank"} href="https://twitter.com/etherspot">
           <BsTwitter size={21} />
         </a>
-        <a target={"_blank"} href="https://google.com">
+        <a target={"_blank"} href="https://t.me/etherspot">
           <FaTelegramPlane size={21} />
         </a>
       </div>

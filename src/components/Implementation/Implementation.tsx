@@ -2,7 +2,7 @@ import { ReactComponent as Arrow } from "../../assets/etherspotArrow.svg";
 
 export const Implementation = () => {
   return (
-    <div className="py-8 relative">
+    <div className="py-8 relative" id="implement">
       <img src="/ellipse.png" className="absolute top-[-60%] left-[-40%]" />
       <div className="flex flex-col md:w-[85%] w-[95%] mx-auto relative">
         <div className="flex justify-between gap-12 items-end md:flex-row flex-col mb-16">
