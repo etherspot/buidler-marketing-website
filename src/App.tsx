@@ -19,7 +19,7 @@ function App() {
         <Hero />
         <Features />
         <div className="flex justify-center my-4">
-          <a className="px-16 py-4 custom-button text-[20px] font-bold">Read Docs</a>
+          <a target={"_blank"} href="https://docs.etherspot.dev/" className="px-16 py-4 custom-button text-[20px] font-bold">Read Docs</a>
         </div>
         <Supported />
         <Cards />

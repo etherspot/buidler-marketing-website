@@ -20,6 +20,10 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+svg {
+  display: inline;
+}
+
 .font-graphik {
   font-family: "Graphik";
 }

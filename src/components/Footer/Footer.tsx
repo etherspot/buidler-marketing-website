@@ -11,7 +11,7 @@ export const Footer = () => {
         <EtherspotLogo />
       </div>
       <div className="flex justify-between items-center gap-16">
-        <a href="https://google.com">Dev Docs</a>
+        <a href="https://docs.etherspot.dev/">Dev Docs</a>
         <a href="https://google.com">Blog</a>
       </div>
       <div className="flex justify-between items-center gap-5">
