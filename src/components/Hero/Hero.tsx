@@ -8,7 +8,9 @@ import Onboard from "@web3-onboard/core";
 import injectedModule from "@web3-onboard/injected-wallets";
 import { ethers } from "ethers";
 const chainId = 1;
-const MAINNET_RPC_URL = `https://mainnet.infura.io/v3/${import.meta.env.REACT_APP_INFURA_ID}`;
+const MAINNET_RPC_URL = `https://mainnet.infura.io/v3/${
+  import.meta.env.REACT_APP_INFURA_ID
+}`;
 
 const injected = injectedModule();
 
@@ -29,24 +31,27 @@ export const Hero = () => {
     return {
       color: {
         background: {
-          main: "#262240",
+          main: "linear-gradient(169deg, #3e3869 5%, #241938 98%)",
           topMenu: "#443d66",
           topMenuButton: "#ffffff",
           card: "#262240",
-          button: "#ff884d",
+          button: "linear-gradient(to bottom, #fdb754, #f18214)",
           closeButton: "#ffffff",
           selectInputToggleButton: "#998ae6",
           selectInput: "#474078",
           selectInputExpanded: "#130c1d",
-          selectInputImagePlaceholder: "#443d66",
+          selectInputImagePlaceholder: "#4f367a",
           textInput: "#1a1726",
           switchInput: "#1a1726",
-          switchInputActiveTab: "linear-gradient(to bottom, #734fb3, #422d66), linear-gradient(to bottom, #3d265c, #222130)",
+          switchInputActiveTab:
+            "linear-gradient(to bottom, #734fb3, #422d66), linear-gradient(to bottom, #3d265c, #222130)",
           switchInputInactiveTab: "transparent",
           pill: "#2b2640",
           checkboxInputInactive: "#665c99",
           dropdownHoverColor: "#443d66",
           selectInputExpandedHover: "#443d66",
+          listItemQuickButtonPrimary: "#eb860b",
+          listItemQuickButtonSecondary: "#4f367a",
         },
         text: {
           selectInput: "#ffeee6",
@@ -59,7 +64,7 @@ export const Hero = () => {
           topMenu: "#998ae6",
           main: "#ffeee6",
           topBar: "#998ae6",
-          buttonSecondary: "#998ae6",
+          buttonSecondary: "#fbae49",
           card: "#ffeee6",
           cardTitle: "#ffeee6",
           button: "#fff",
@@ -67,7 +72,7 @@ export const Hero = () => {
           textInput: "#ffeee6",
           textInputSecondary: "#9466e6",
           switchInputActiveTab: "#ffeee6",
-          switchInputInactiveTab: "#bbb8cc",
+          switchInputInactiveTab: "#9466e6",
           selectInputImagePlaceholder: "#ffeee6",
           cardDisabled: "#605e5e",
           pill: "#bbb8cc",
@@ -109,8 +114,8 @@ export const Hero = () => {
               Give Your dApp Cutting Edge Account Abstraction Super-Powers
             </h3>
             <p className="text-[#8E8EA8]">
-              Implement BUIDLer a plug & play, solution that you can
-              easily drop into your dApp and take it to the top level.
+              Implement BUIDLer a plug & play, solution that you can easily drop
+              into your dApp and take it to the top level.
             </p>
           </div>
           <div className="flex items-center gap-4">
