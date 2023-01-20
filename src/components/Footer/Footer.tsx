@@ -17,6 +17,9 @@ export const Footer = () => {
         <a target={"_blank"} href="https://etherspot.io/blog/">
           Blog
         </a>
+        <a target={"_blank"} href="/privacy_policy.pdf">
+          Privacy Policy
+        </a>
       </div>
       <div className="flex justify-between items-center gap-5">
         <a target={"_blank"} href="https://discord.etherspot.io">
