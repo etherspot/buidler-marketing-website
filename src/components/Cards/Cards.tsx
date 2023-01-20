@@ -13,13 +13,13 @@ import { ReactComponent as EtherspotLogo } from "../../assets/EtherspotLogo.svg"
 
 export const Cards = () => {
   return (
-    <div className="mx-auto md:w-[85%] w-[95%] relative flex justify-between items-center gap-8 py-16 md:flex-row flex-col">
+    <div className="mx-auto max-w-[1400px] md:w-[85%] w-[95%] relative flex justify-between items-center gap-8 py-16 md:flex-row flex-col">
       <div className="w-full relative custom-card flex flex-col">
         <h3 className="text-2xl">
           Direct access for your dApp to Li.Fi, Uniswap, Sushiswap, Quickswap,
           1inch, ParaSwap, HoneySwap, Socket Network, and more.
         </h3>
-        <div className="flex justify-between items-center flex-wrap gap-x-8 gap-y-6 mt-auto w-[80%] mx-auto">
+        <div className="flex justify-between items-center flex-wrap gap-x-8 gap-y-6 mt-auto w-[80%] max-w-[300px] mx-auto">
           <CardIconOne />
           <CardIconTwo />
           <CardIconThree />

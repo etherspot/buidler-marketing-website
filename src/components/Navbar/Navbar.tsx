@@ -6,12 +6,12 @@ export const Navbar = () => {
   return (
     <div className="w-[95%] fixed top-0 left-[50%] translate-x-[-50%] mx-auto z-50 flex justify-between items-center custom-navbar">
       <div className="font-bold font-graphik text-2xl">BUIDLer</div>
-      <div className="flex justify-between items-center gap-16">
+      <div className="hidden md:flex justify-between items-center gap-16">
         <a href="https://docs.etherspot.dev/">Dev Docs</a>
         <a href="#implement">Implementation</a>
         <a href="#batching">Use Cases</a>
       </div>
-      <div className="flex justify-between items-center gap-5">
+      <div className="hidden md:flex justify-between items-center gap-5">
         <a target={"_blank"} href="https://etherspot.io/">
           <EtherspotLogo height={22} />
         </a>

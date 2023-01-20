@@ -1,7 +1,7 @@
 export const Batching = () => {
   return (
     <div className="relative" id="batching">
-      <div className="md:w-[85%] w-[95%] mx-auto py-8">
+      <div className="md:w-[85%] max-w-[1400px] w-[95%] mx-auto py-8">
         <h2 className="text-center text-[32px] mb-16">
           Transaction batching use-cases
         </h2>

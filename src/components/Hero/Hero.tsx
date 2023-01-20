@@ -99,13 +99,13 @@ export const Hero = () => {
     }
   };
   return (
-    <div className="mx-auto min-h-[100vh] flex justify-center items-center relative text-black dark:text-white pt-[120px]">
+    <div className="mx-auto min-h-[70vh] max-w-[1800px] flex justify-center items-center relative text-black dark:text-white pt-[120px]">
       <img
         src="/ellipse.png"
         className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
       />
       <div className="flex justify-between mx-auto md:w-[85%] w-[95%] md:flex-row flex-col relative">
-        <div className="md:w-1/2 w-full relative px-4 pt-16 md:mb-0 mb-[30px]">
+        <div className="max-w-[600px] md:w-1/2 w-full relative px-4 pt-16 md:mb-0 mb-[30px]">
           <h1 className="md:text-7xl text-4xl font-semibold mb-16">
             BUIDLer for Web3 builders
           </h1>
@@ -114,7 +114,7 @@ export const Hero = () => {
               Give Your dApp Cutting Edge Account Abstraction Super-Powers
             </h3>
             <p className="text-[#8E8EA8]">
-              Implement BUIDLer a plug & play, solution that you can easily drop
+              Implement BUIDLer, a plug & play solution that you can easily drop
               into your dApp and take it to the top level.
             </p>
           </div>
@@ -123,8 +123,8 @@ export const Hero = () => {
             <Arrow />
           </div>
         </div>
-        <div className="md:w-1/2 w-full relative">
-          <div className="custom-background-card md:min-h-[90vh] min-h-[50vh] p-6 flex flex-col items-center">
+        <div className="max-w-[600px] md:w-1/2 w-full relative">
+          <div className="custom-background-card md:min-h-[60vh] min-h-[50vh] p-6 flex flex-col items-center">
             <h2 className="text-center text-[36px] mb-6">
               BUIDLer React Component
             </h2>
