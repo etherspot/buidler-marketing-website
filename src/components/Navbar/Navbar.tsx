@@ -15,7 +15,7 @@ export const Navbar = () => {
         <a target={"_blank"} href="https://etherspot.io/">
           <EtherspotLogo height={22} />
         </a>
-        <a target={"_blank"} href="https://discord.gg/JHRmWGpP3F">
+        <a target={"_blank"} href="https://discord.etherspot.io">
           <SiDiscord size={21} />
         </a>
         <a target={"_blank"} href="https://github.com/etherspot/etherspot-sdk">

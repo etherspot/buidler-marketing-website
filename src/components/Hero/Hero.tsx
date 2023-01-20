@@ -29,19 +29,19 @@ export const Hero = () => {
     return {
       color: {
         background: {
-          main: "#221f33",
+          main: "#262240",
           topMenu: "#443d66",
-          topMenuButton: "#ff884d",
-          card: "#2b2640",
+          topMenuButton: "#ffffff",
+          card: "#262240",
           button: "#ff884d",
-          closeButton: "#ff884d",
-          selectInputToggleButton: "#ff884d",
-          selectInput: "#443d66",
-          selectInputExpanded: "#1a1726",
+          closeButton: "#ffffff",
+          selectInputToggleButton: "#998ae6",
+          selectInput: "#474078",
+          selectInputExpanded: "#130c1d",
           selectInputImagePlaceholder: "#443d66",
           textInput: "#1a1726",
           switchInput: "#1a1726",
-          switchInputActiveTab: "#443d66",
+          switchInputActiveTab: "linear-gradient(to bottom, #734fb3, #422d66), linear-gradient(to bottom, #3d265c, #222130)",
           switchInputInactiveTab: "transparent",
           pill: "#2b2640",
           checkboxInputInactive: "#665c99",
@@ -65,7 +65,7 @@ export const Hero = () => {
           button: "#fff",
           errorMessage: "#ff4d6a",
           textInput: "#ffeee6",
-          textInputSecondary: "#ffeee6",
+          textInputSecondary: "#9466e6",
           switchInputActiveTab: "#ffeee6",
           switchInputInactiveTab: "#bbb8cc",
           selectInputImagePlaceholder: "#ffeee6",
@@ -109,7 +109,7 @@ export const Hero = () => {
               Give Your dApp Cutting Edge Account Abstraction Super-Powers
             </h3>
             <p className="text-[#8E8EA8]">
-              Implement BUIDLer, a free, plug & play, solution that you can
+              Implement BUIDLer a plug & play, solution that you can
               easily drop into your dApp and take it to the top level.
             </p>
           </div>

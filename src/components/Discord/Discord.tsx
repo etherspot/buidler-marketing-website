@@ -9,7 +9,7 @@ export const Discord = () => {
             Have any questions? Join our Discord and chat with the team!
           </h2>
           <a
-            href={"https://discord.gg/JHRmWGpP3F"}
+            href={"https://discord.etherspot.io"}
             target={"_blank"}
             className="flex justify-start p-y-2 px-1 items-center w-[278px] h-[70px] gap-3 border-[#2E2E4A] border-[1px] rounded-[3rem]"
           >

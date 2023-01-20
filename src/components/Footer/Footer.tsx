@@ -19,7 +19,7 @@ export const Footer = () => {
         </a>
       </div>
       <div className="flex justify-between items-center gap-5">
-        <a target={"_blank"} href="https://discord.gg/JHRmWGpP3F">
+        <a target={"_blank"} href="https://discord.etherspot.io">
           <SiDiscord size={21} />
         </a>
         <a target={"_blank"} href="https://github.com/etherspot/etherspot-sdk">
