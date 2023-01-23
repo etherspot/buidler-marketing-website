@@ -74,7 +74,7 @@ const iconList = [
 
 export const Supported = () => {
   return (
-    <div className="relative z-0 overflow-hidden max-w-[1800px]">
+    <div className="relative z-0 overflow-hidden max-w-[1800px] mx-auto">
       <img
         src="/curve.png"
         className="absolute top-[-40%] left-[50%] translate-x-[-50%] w-[80vw] max-w-[1300px]"
