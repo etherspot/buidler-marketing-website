@@ -121,3 +121,22 @@ svg {
   backdrop-filter: blur(3.5px);
   border-radius: 18px;
 }
+
+.bookingBtn {
+  background: linear-gradient(
+    95.8deg,
+    #ffbd61 -3.55%,
+    #f79d1e 55.7%,
+    #f07d12 101.77%
+  );
+  box-shadow: 0px 7px 20px rgba(17, 21, 37, 0.6),
+    inset -1px -1px 1px rgba(79, 0, 0, 0.25),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.8);
+  border-radius: 100px;
+  width: 164px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
