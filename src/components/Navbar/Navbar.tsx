@@ -8,7 +8,7 @@ export const Navbar = () => {
       <div className="font-bold font-graphik text-2xl">BUIDLer</div>
       <div className="hidden md:flex justify-between items-center gap-16">
         <a href="https://docs.etherspot.dev/">Dev Docs</a>
-        <a target={"_blank"} href="https://forms.gle/YiiMkJwZM6MuHGky6">Book a demo</a>
+        <a className="border-b-2 border-[#f79d1e]" target={"_blank"} href="https://forms.gle/YiiMkJwZM6MuHGky6">Book a demo</a>
         <a href="#implement">Implementation</a>
         <a href="#batching">Use Cases</a>
       </div>
