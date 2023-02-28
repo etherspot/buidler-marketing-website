@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@etherspot/react-transaction-buidler": "^0.23.1",
+    "@etherspot/react-transaction-buidler": "^0.24.0",
     "@types/node": "^18.11.18",
     "@web3-onboard/core": "2.0.11",
     "@web3-onboard/injected-wallets": "^2.5.0",
