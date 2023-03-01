@@ -4,6 +4,8 @@ import svgr from "vite-plugin-svgr";
 import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
 import cjs from "@rollup/plugin-commonjs";
 import nodePolyfills from "rollup-plugin-polyfill-node";
+import replace from "@rollup/plugin-replace";
+import babel from 'rollup-plugin-babel';
 
 // // https://vitejs.dev/config/
 // export default defineConfig({
@@ -69,7 +71,18 @@ export default defineConfig({
         nodePolyfills({
           include: ["node_modules/**/*.js", "../../node_modules/**/*.js"],
         }),
-        cjs(),
+        replace({
+          "process.env.NODE_ENV": JSON.stringify("development"),
+        }),
+        babel({
+          exclude: "node_modules/**",
+          presets: ["@babel/preset-react"],
+          babelHelpers: "bundled",
+        }),
+        cjs({
+          include: /node_modules/,
+          requireReturnsDefault: 'auto',
+        }),
       ],
     },
   },
