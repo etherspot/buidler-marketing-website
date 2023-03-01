@@ -61,7 +61,7 @@ export default defineConfig({
   build: {
     // minify: false,
     // target: "es2015",
-    outDir: "dist_web",
+    outDir: "dist",
     sourcemap: true,
     // commonjsOptions: { include: [] },
     rollupOptions: {
@@ -79,10 +79,10 @@ export default defineConfig({
           presets: ["@babel/preset-react"],
           babelHelpers: "bundled",
         }),
-        cjs({
-          include: /node_modules/,
-          requireReturnsDefault: 'auto',
-        }),
+        // cjs({
+        //   include: /node_modules/,
+        //   requireReturnsDefault: 'auto',
+        // }),
       ],
     },
   },
