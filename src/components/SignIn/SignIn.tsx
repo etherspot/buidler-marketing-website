@@ -1,21 +1,26 @@
-import styled from 'styled-components';
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ADAPTER_EVENTS, CHAIN_NAMESPACES, WALLET_ADAPTER_TYPE, WALLET_ADAPTERS } from '@web3auth/base';
-import { Web3AuthCore } from '@web3auth/core';
-import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
-import { BsGithub, BsTwitter } from 'react-icons/bs';
-import { AiOutlineMail } from 'react-icons/ai';
-import { TorusWalletAdapter } from '@web3auth/torus-evm-adapter';
-import { useConnect, useAccount } from 'wagmi';
+import styled from "styled-components";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  ADAPTER_EVENTS,
+  CHAIN_NAMESPACES,
+  WALLET_ADAPTER_TYPE,
+  WALLET_ADAPTERS,
+} from "@web3auth/base";
+import { Web3AuthCore } from "@web3auth/core";
+import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
+import { BsGithub, BsTwitter } from "react-icons/bs";
+import { AiOutlineMail } from "react-icons/ai";
+import { TorusWalletAdapter } from "@web3auth/torus-evm-adapter";
+import { useConnect, useAccount } from "wagmi";
 
-import iconMetamask from '../../assets/images/icon-metamask.png';
-import iconWalletConnect from '../../assets/images/icon-walletconnect.png';
-import iconGoogle from '../../assets/images/icon-google.png';
-import iconApple from '../../assets/images/icon-apple.png';
-import iconFacebook from '../../assets/images/icon-facebook.png';
-import iconDiscord from '../../assets/images/icon-discord.png';
-import iconTwitch from '../../assets/images/icon-twitch.png';
-import iconCoinbase from '../../assets/images/icon-coinbase.png';
+import iconMetamask from "../../assets/images/icon-metamask.png";
+import iconWalletConnect from "../../assets/images/icon-walletconnect.png";
+import iconGoogle from "../../assets/images/icon-google.png";
+import iconApple from "../../assets/images/icon-apple.png";
+import iconFacebook from "../../assets/images/icon-facebook.png";
+import iconDiscord from "../../assets/images/icon-discord.png";
+import iconTwitch from "../../assets/images/icon-twitch.png";
+import iconCoinbase from "../../assets/images/icon-coinbase.png";
 
 const Wrapper = styled.div`
   width: 374px;
@@ -24,7 +29,7 @@ const Wrapper = styled.div`
   border-radius: 24px;
   border: solid 1px #3d366d;
   background-image: linear-gradient(166deg, #3e3869 9%, #241938 97%);
-  font-family: 'PTRootUIWebRegular', sans-serif;
+  font-family: "PTRootUIWebRegular", sans-serif;
   color: #fff;
   text-align: center;
   user-select: none;
@@ -38,7 +43,7 @@ const WrapperTitle = styled.h1`
 
 const WrapperText = styled.p<{ textAlign?: string }>`
   font-size: 14px;
-  text-align: ${({ textAlign }) => textAlign ?? 'center'};
+  text-align: ${({ textAlign }) => textAlign ?? "center"};
 `;
 
 const LoadingBarWrapper = styled.div`
@@ -115,7 +120,7 @@ const SignInOptionsWrapper = styled.div`
 `;
 
 const SignInOptionWrapper = styled.div<{ half?: boolean }>`
-  width: ${({ half }) => (half ? 'calc(50% - 7px)' : '100%')};
+  width: ${({ half }) => (half ? "calc(50% - 7px)" : "100%")};
 `;
 
 const SignInOptionIcon = styled.span`
@@ -132,7 +137,7 @@ const SignInOption = styled.div<{ disabled?: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: 'PTRootUIWebMedium', sans-serif;
+  font-family: "PTRootUIWebMedium", sans-serif;
   color: #fff;
   font-size: 16px;
   padding: 28px 34px;
@@ -152,7 +157,7 @@ const EmailInput = styled.input`
   padding: 16px 13px;
   border-radius: 12px;
   border: solid 1.5px #49437d;
-  font-family: 'PTRootUIWebMedium', sans-serif;
+  font-family: "PTRootUIWebMedium", sans-serif;
   font-size: 16px;
   color: #fff;
   background-color: #241938;
@@ -175,7 +180,7 @@ const EmailSubmitButton = styled.button`
   box-shadow: 0 2px 4px 0 rgba(95, 0, 1, 0.13);
   border: none;
   background-image: linear-gradient(to bottom, #fdb754, #f18214);
-  font-family: 'PTRootUIWebRegular', sans-serif;
+  font-family: "PTRootUIWebRegular", sans-serif;
   text-align: center;
   color: #fff;
   font-size: 20px;
@@ -192,14 +197,14 @@ const EmailSubmitButton = styled.button`
 const web3AuthClientId = import.meta.env.VITE_APP_WEB3AUTH_CLIENT_ID;
 
 type LOGIN_PROVIDER_TYPE =
-  | 'google'
-  | 'facebook'
-  | 'apple'
-  | 'discord'
-  | 'twitch'
-  | 'github'
-  | 'twitter'
-  | 'email_passwordless';
+  | "google"
+  | "facebook"
+  | "apple"
+  | "discord"
+  | "twitch"
+  | "github"
+  | "twitter"
+  | "email_passwordless";
 
 interface SignInProps {
   onWeb3ProviderSet: (web3Provider: any) => void;
@@ -223,31 +228,36 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
 
   useEffect(() => {
     const initWeb3AuthCore = async () => {
-      if (!!localStorage.getItem('Web3Auth-cachedAdapter')) setIsSigningIn(true);
+      if (!!localStorage.getItem("Web3Auth-cachedAdapter"))
+        setIsSigningIn(true);
 
       const web3AuthInstance = new Web3AuthCore({
         clientId: web3AuthClientId,
         chainConfig: {
           chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: import.meta.env.VITE_APP_CHAIN_ID_HEX,
-          rpcTarget: `https://polygon-mainnet.infura.io/v3/${import.meta.env.VITE_APP_INFURA_ID}`,
+          chainId: process.env.REACT_APP_CHAIN_ID_HEX,
+          rpcTarget: `https://polygon-mainnet.infura.io/v3/${
+            import.meta.env.VITE_APP_INFURA_ID
+          }`,
         },
-        storageKey: 'local',
+        storageKey: "local",
       });
 
       const openLoginAdapter = new OpenloginAdapter({
         adapterSettings: {
-          network: 'mainnet',
+          network: "mainnet",
           clientId: web3AuthClientId,
         },
         loginSettings: {
-          mfaLevel: 'none',
+          mfaLevel: "none",
         },
       });
 
       web3AuthInstance.configureAdapter(openLoginAdapter);
 
-      const torusWalletAdapter = new TorusWalletAdapter({ clientId: web3AuthClientId });
+      const torusWalletAdapter = new TorusWalletAdapter({
+        clientId: web3AuthClientId,
+      });
       web3AuthInstance.configureAdapter(torusWalletAdapter);
 
       web3AuthInstance.on(ADAPTER_EVENTS.CONNECTED, () => {
@@ -259,13 +269,8 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
       web3AuthInstance.on(ADAPTER_EVENTS.ERRORED, () => {
         setIsSigningIn(false);
       });
-      try {
-        
-        await web3AuthInstance.init();
-        console.log("Initialized")
-      } catch (error) {
-        
-      }
+
+      await web3AuthInstance.init();
       setIsSigningIn(false);
 
       setWeb3Auth(web3AuthInstance);
@@ -284,18 +289,18 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
       if (!connector?.ready || !isConnected) return;
       const wagmiWeb3Provider = await connector.getProvider();
       onWeb3ProviderSet(wagmiWeb3Provider);
-    }
+    };
     update();
-  }, [
-    connector,
-    isConnected,
-    onWeb3ProviderSet,
-  ]);
+  }, [connector, isConnected, onWeb3ProviderSet]);
 
   const { connect, connectors } = useConnect();
 
   const loginWithAdapter = useCallback(
-    async (adapter: WALLET_ADAPTER_TYPE, loginProvider?: LOGIN_PROVIDER_TYPE, login_hint?: string) => {
+    async (
+      adapter: WALLET_ADAPTER_TYPE,
+      loginProvider?: LOGIN_PROVIDER_TYPE,
+      login_hint?: string
+    ) => {
       setErrorMessage(null);
       setIsSigningIn(true);
 
@@ -306,24 +311,33 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
 
       let web3authProvider;
       try {
-        web3authProvider = await web3Auth.connectTo(adapter, { loginProvider, login_hint });
+        web3authProvider = await web3Auth.connectTo(adapter, {
+          loginProvider,
+          login_hint,
+        });
       } catch (e) {
-        setErrorMessage(`Failed to login! Reason: ${e instanceof Error && e?.message ? e.message : 'unknown'}.`);
+        setErrorMessage(
+          `Failed to login! Reason: ${
+            e instanceof Error && e?.message ? e.message : "unknown"
+          }.`
+        );
         setIsSigningIn(false);
         return;
       }
 
-    if (!web3authProvider) {
-      setErrorMessage('Failed to get connected provider!');
-      setIsSigningIn(false);
-      return;
-    }
+      if (!web3authProvider) {
+        setErrorMessage("Failed to get connected provider!");
+        setIsSigningIn(false);
+        return;
+      }
 
-    onWeb3ProviderSet(web3authProvider);
-    setEmail('');
-    setShowEmailLogin(false);
-    setIsSigningIn(false);
-  }, [web3Auth, onWeb3ProviderSet]);
+      onWeb3ProviderSet(web3authProvider);
+      setEmail("");
+      setShowEmailLogin(false);
+      setIsSigningIn(false);
+    },
+    [web3Auth, onWeb3ProviderSet]
+  );
 
   const loginWithOpenLogin = useCallback(
     async (loginProvider: LOGIN_PROVIDER_TYPE, login_hint?: string) =>
@@ -338,26 +352,46 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
   const visibleSignInOptions = useMemo(() => {
     const signInOptions = {
       social: [
-        { title: 'Google', icon: <img src={iconGoogle} alt="google" />, onClick: () => loginWithOpenLogin('google') },
-        { title: 'Apple', icon: <img src={iconApple} alt="apple" />, onClick: () => loginWithOpenLogin('apple') },
         {
-          title: 'Facebook',
+          title: "Google",
+          icon: <img src={iconGoogle} alt="google" />,
+          onClick: () => loginWithOpenLogin("google"),
+        },
+        {
+          title: "Apple",
+          icon: <img src={iconApple} alt="apple" />,
+          onClick: () => loginWithOpenLogin("apple"),
+        },
+        {
+          title: "Facebook",
           icon: <img src={iconFacebook} alt="facebook" />,
-          onClick: () => loginWithOpenLogin('facebook'),
+          onClick: () => loginWithOpenLogin("facebook"),
         },
         {
-          title: 'Discord',
+          title: "Discord",
           icon: <img src={iconDiscord} alt="discord" />,
-          onClick: () => loginWithOpenLogin('discord'),
+          onClick: () => loginWithOpenLogin("discord"),
         },
         {
-          title: 'Twitter',
+          title: "Twitter",
           icon: <BsTwitter size={24} color="#00ACEE" />,
-          onClick: () => loginWithOpenLogin('twitter'),
+          onClick: () => loginWithOpenLogin("twitter"),
         },
-        { title: 'Email', icon: <AiOutlineMail size={24} color="#fff" />, onClick: () => setShowEmailLogin(true) },
-        { title: 'GitHub', icon: <BsGithub size={24} color="#000" />, onClick: () => loginWithOpenLogin('github') },
-        { title: 'Twitch', icon: <img src={iconTwitch} alt="twitch" />, onClick: () => loginWithOpenLogin('twitch') },
+        {
+          title: "Email",
+          icon: <AiOutlineMail size={24} color="#fff" />,
+          onClick: () => setShowEmailLogin(true),
+        },
+        {
+          title: "GitHub",
+          icon: <BsGithub size={24} color="#000" />,
+          onClick: () => loginWithOpenLogin("github"),
+        },
+        {
+          title: "Twitch",
+          icon: <img src={iconTwitch} alt="twitch" />,
+          onClick: () => loginWithOpenLogin("twitch"),
+        },
       ],
       web3: [
         ...connectors.map((connector) => ({
@@ -368,13 +402,21 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
       ],
     };
 
-    const selectedSignInOptions = showSocialLogins ? signInOptions.social : signInOptions.web3;
+    const selectedSignInOptions = showSocialLogins
+      ? signInOptions.social
+      : signInOptions.web3;
     if (showMoreOptions) return selectedSignInOptions;
 
     const visibleNumber = showSocialLogins ? 6 : 3;
 
     return selectedSignInOptions.slice(0, visibleNumber);
-  }, [showSocialLogins, showMoreOptions, loginWithOpenLogin, connectors, connect]);
+  }, [
+    showSocialLogins,
+    showMoreOptions,
+    loginWithOpenLogin,
+    connectors,
+    connect,
+  ]);
 
   if (isSigningIn) {
     return (
@@ -383,7 +425,9 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
         <LoadingBarWrapper>
           <LoadingBar />
         </LoadingBarWrapper>
-        <WrapperText textAlign="left">⏱ This may take a minute or so please don’t close this window.</WrapperText>
+        <WrapperText textAlign="left">
+          ⏱ This may take a minute or so please don’t close this window.
+        </WrapperText>
       </Wrapper>
     );
   }
@@ -403,10 +447,15 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
     return (
       <Wrapper>
         <WrapperTitle>Sign in with Email</WrapperTitle>
-        <EmailInput placeholder="Enter you email" onChange={(e) => setEmail(e?.target?.value ?? '')} />
+        <EmailInput
+          placeholder="Enter you email"
+          onChange={(e) => setEmail(e?.target?.value ?? "")}
+        />
         {!!errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <EmailSubmitButton
-          onClick={() => loginWithOpenLogin('email_passwordless', email ?? undefined)}
+          onClick={() =>
+            loginWithOpenLogin("email_passwordless", email ?? undefined)
+          }
           disabled={!email}
         >
           Sign in
@@ -414,7 +463,7 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
         <WrapperTextClickable
           onClick={() => {
             setShowEmailLogin(false);
-            setEmail('');
+            setEmail("");
             setErrorMessage(null);
           }}
         >
@@ -429,10 +478,16 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
       <WrapperTitle>Sign in</WrapperTitle>
       <>
         <SwitchWrapper>
-          <SwitchOption isActive={showSocialLogins} onClick={() => setShowSocialLogins(true)}>
+          <SwitchOption
+            isActive={showSocialLogins}
+            onClick={() => setShowSocialLogins(true)}
+          >
             Social
           </SwitchOption>
-          <SwitchOption isActive={!showSocialLogins} onClick={() => setShowSocialLogins(false)}>
+          <SwitchOption
+            isActive={!showSocialLogins}
+            onClick={() => setShowSocialLogins(false)}
+          >
             Web3
           </SwitchOption>
         </SwitchWrapper>
@@ -451,8 +506,10 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
           ))}
         </SignInOptionsWrapper>
         {!!errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        <WrapperTextClickable onClick={() => setShowMoreOptions(!showMoreOptions)}>
-          Show {showMoreOptions ? 'less' : 'more'} options
+        <WrapperTextClickable
+          onClick={() => setShowMoreOptions(!showMoreOptions)}
+        >
+          Show {showMoreOptions ? "less" : "more"} options
         </WrapperTextClickable>
       </>
     </Wrapper>

@@ -19,8 +19,6 @@ const MAINNET_RPC_URL = `https://mainnet.infura.io/v3/${
   import.meta.env.VITE_APP_INFURA_ID
 }`;
 
-console.log("envv",import.meta.env.VITE_APP_INFURA_ID)
-
 const injected = injectedModule();
 
 const onboard = Onboard({
