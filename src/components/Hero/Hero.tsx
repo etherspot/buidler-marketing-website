@@ -4,12 +4,19 @@ import {
   Etherspot,
   TRANSACTION_BLOCK_TYPE,
 } from "@etherspot/react-transaction-buidler";
+import { Web3Auth } from "@web3auth/modal";
+import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
 import Onboard from "@web3-onboard/core";
 import injectedModule from "@web3-onboard/injected-wallets";
 import { ethers } from "ethers";
+import Web3 from "web3";
+import { Web3AuthCore } from "@web3auth/core";
+import { useAccount, useDisconnect } from "wagmi";
+import SignIn from "../SignIn/SignIn";
+
 const chainId = 1;
 const MAINNET_RPC_URL = `https://mainnet.infura.io/v3/${
-  import.meta.env.REACT_APP_INFURA_ID
+  import.meta.env.VITE_APP_INFURA_ID
 }`;
 
 const injected = injectedModule();
@@ -81,23 +88,14 @@ export const Hero = () => {
       },
     };
   }, []);
-  const [walletAddress, setWalletAddress] = useState("");
-  const [connectionProvider, setConnectionProvider] = useState<any>(null);
-  const initWallet = async () => {
-    const wallets = await onboard.connectWallet();
 
-    console.log(wallets);
+  const [connectedProvider, setConnectedProvider] = useState(null);
+  const [web3AuthInstance, setWeb3AuthInstance] = useState<Web3AuthCore | null>(
+    null
+  );
+  const { disconnect: wagmiDisconnect } = useDisconnect();
+  const { connector, isConnected } = useAccount();
 
-    if (wallets[0]) {
-      // create an ethers provider with the last connected wallet provider
-      const ethersProvider = new ethers.providers.Web3Provider(
-        wallets[0].provider,
-        "any"
-      );
-      setConnectionProvider(wallets[0].provider);
-      const signer = ethersProvider.getSigner();
-    }
-  };
   return (
     <div className="mx-auto min-h-[70vh] max-w-[1800px] flex justify-center items-center relative text-black dark:text-white pt-[120px]">
       <img
@@ -124,27 +122,57 @@ export const Hero = () => {
           </div>
         </div>
         <div className="max-w-[600px] md:w-1/2 w-full relative">
-          <div className="custom-background-card md:min-h-[60vh] min-h-[50vh] p-6 flex flex-col items-center">
+          <div className="custom-background-card md:min-h-[80vh] min-h-[50vh] p-6 flex flex-col items-center">
             <h2 className="text-center text-[36px] mb-6">
               BUIDLer React Component
             </h2>
-            <div
-              onClick={() => {
-                if (!connectionProvider) {
-                  initWallet();
-                }
-              }}
-            >
-              <Etherspot
-                themeOverride={themeOverride}
-                defaultTransactionBlocks={[
-                  { type: TRANSACTION_BLOCK_TYPE.ASSET_BRIDGE },
-                ]}
-                chainId={chainId}
-                provider={connectionProvider || null}
-              />
+            <div>
+              {!connectedProvider && (
+                <SignIn
+                  onWeb3ProviderSet={async (web3Provider) => {
+                    if (!web3Provider) {
+                      setConnectedProvider(null);
+                      return;
+                    }
+
+                    const web3 = new Web3(web3Provider as any);
+
+                    // @ts-ignore
+                    setConnectedProvider(web3.currentProvider);
+                  }}
+                  onWeb3AuthInstanceSet={setWeb3AuthInstance}
+                />
+              )}
+              {connectedProvider && (
+                <div>
+                  <Etherspot
+                    provider={connectedProvider}
+                    chainId={chainId}
+                    themeOverride={themeOverride}
+                    onLogout={async () => {
+                      try {
+                        if (isConnected) wagmiDisconnect();
+                        if (connector) await connector.disconnect();
+                      } catch (e) {
+                        //
+                      }
+
+                      try {
+                        if (web3AuthInstance) {
+                          await web3AuthInstance.logout({ cleanup: true });
+                          web3AuthInstance.clearCache();
+                        }
+                      } catch (e) {
+                        //
+                      }
+
+                      setConnectedProvider(null);
+                    }}
+                    showMenuLogout
+                  />
+                </div>
+              )}
             </div>
-            {/* <img src="/etherspotPlaceholder.png" /> */}
           </div>
         </div>
       </div>
