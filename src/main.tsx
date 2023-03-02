@@ -6,9 +6,7 @@ import "./index.css";
 import WagmiProvider from "./WagmiProvider/WagmiProvider";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <WagmiProvider>
-      <App />
-    </WagmiProvider>
-  </React.StrictMode>
+  <WagmiProvider>
+    <App />
+  </WagmiProvider>
 );

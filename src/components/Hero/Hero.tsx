@@ -90,8 +90,6 @@ export const Hero = () => {
       },
     };
   }, []);
-  const [walletAddress, setWalletAddress] = useState("");
-  const [connectionProvider, setConnectionProvider] = useState<any>(null);
 
   const [connectedProvider, setConnectedProvider] = useState(null);
   const [web3AuthInstance, setWeb3AuthInstance] = useState<Web3AuthCore | null>(
@@ -100,21 +98,6 @@ export const Hero = () => {
   const { disconnect: wagmiDisconnect } = useDisconnect();
   const { connector, isConnected } = useAccount();
 
-  const initWallet = async () => {
-    const wallets = await onboard.connectWallet();
-
-    console.log(wallets);
-
-    if (wallets[0]) {
-      // create an ethers provider with the last connected wallet provider
-      const ethersProvider = new ethers.providers.Web3Provider(
-        wallets[0].provider,
-        "any"
-      );
-      setConnectionProvider(wallets[0].provider);
-      const signer = ethersProvider.getSigner();
-    }
-  };
   return (
     <div className="mx-auto min-h-[70vh] max-w-[1800px] flex justify-center items-center relative text-black dark:text-white pt-[120px]">
       <img
