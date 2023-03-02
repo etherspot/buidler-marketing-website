@@ -235,7 +235,7 @@ const SignIn = ({ onWeb3ProviderSet, onWeb3AuthInstanceSet }: SignInProps) => {
         clientId: web3AuthClientId,
         chainConfig: {
           chainNamespace: CHAIN_NAMESPACES.EIP155,
-          chainId: process.env.REACT_APP_CHAIN_ID_HEX,
+          chainId: import.meta.env.VITE_APP_CHAIN_ID_HEX,
           rpcTarget: `https://polygon-mainnet.infura.io/v3/${
             import.meta.env.VITE_APP_INFURA_ID
           }`,
