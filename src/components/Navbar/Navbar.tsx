@@ -24,7 +24,7 @@ export const Navbar = () => {
         <a
           className="bookingBtn"
           target={"_blank"}
-          href="https://forms.gle/YiiMkJwZM6MuHGky6"
+          href="https://etherspot.io/request-demo/"
         >
           Book a demo
         </a>
