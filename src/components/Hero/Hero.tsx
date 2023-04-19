@@ -122,56 +122,18 @@ export const Hero = () => {
           </div>
         </div>
         <div className="max-w-[600px] md:w-1/2 w-full relative">
-          <div className="custom-background-card md:min-h-[80vh] min-h-[50vh] p-6 flex flex-col items-center">
+          <div className="custom-background-card md:min-h-[80vh] min-h-[50vh] p-6 px-8 flex flex-col items-center">
             <h2 className="text-center text-[36px] mb-6">
               BUIDLer React Component
             </h2>
             <div>
-              {!connectedProvider && (
-                <SignIn
-                  onWeb3ProviderSet={async (web3Provider) => {
-                    if (!web3Provider) {
-                      setConnectedProvider(null);
-                      return;
-                    }
-
-                    const web3 = new Web3(web3Provider as any);
-
-                    // @ts-ignore
-                    setConnectedProvider(web3.currentProvider);
-                  }}
-                  onWeb3AuthInstanceSet={setWeb3AuthInstance}
+              <a href="https://app.buidler.etherspot.io" target="_blank">
+                <img
+                  src="/Buidler.png"
+                  className="w-full h-auto"
+                  alt="buidler"
                 />
-              )}
-              {connectedProvider && (
-                <div>
-                  <Etherspot
-                    provider={connectedProvider}
-                    chainId={chainId}
-                    themeOverride={themeOverride}
-                    onLogout={async () => {
-                      try {
-                        if (isConnected) wagmiDisconnect();
-                        if (connector) await connector.disconnect();
-                      } catch (e) {
-                        //
-                      }
-
-                      try {
-                        if (web3AuthInstance) {
-                          await web3AuthInstance.logout({ cleanup: true });
-                          web3AuthInstance.clearCache();
-                        }
-                      } catch (e) {
-                        //
-                      }
-
-                      setConnectedProvider(null);
-                    }}
-                    showMenuLogout
-                  />
-                </div>
-              )}
+              </a>
             </div>
           </div>
         </div>
