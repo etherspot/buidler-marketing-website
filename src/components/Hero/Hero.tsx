@@ -6,32 +6,17 @@ import {
 } from "@etherspot/react-transaction-buidler";
 import { Web3Auth } from "@web3auth/modal";
 import { OpenloginAdapter } from "@web3auth/openlogin-adapter";
-import Onboard from "@web3-onboard/core";
-import injectedModule from "@web3-onboard/injected-wallets";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import { Web3AuthCore } from "@web3auth/core";
 import { useAccount, useDisconnect } from "wagmi";
 import SignIn from "../SignIn/SignIn";
+import { Web3AuthNoModal } from "@web3auth/no-modal";
 
 const chainId = 1;
 const MAINNET_RPC_URL = `https://mainnet.infura.io/v3/${
   import.meta.env.VITE_APP_INFURA_ID
 }`;
-
-const injected = injectedModule();
-
-const onboard = Onboard({
-  wallets: [injected],
-  chains: [
-    {
-      id: "0x1",
-      token: "ETH",
-      label: "Ethereum Mainnet",
-      rpcUrl: MAINNET_RPC_URL,
-    },
-  ],
-});
 
 export const Hero = () => {
   const themeOverride = useMemo(() => {
@@ -90,9 +75,9 @@ export const Hero = () => {
   }, []);
 
   const [connectedProvider, setConnectedProvider] = useState(null);
-  const [web3AuthInstance, setWeb3AuthInstance] = useState<Web3AuthCore | null>(
-    null
-  );
+  const [web3AuthInstance, setWeb3AuthInstance] =
+    useState<Web3AuthNoModal | null>(null);
+
   const { disconnect: wagmiDisconnect } = useDisconnect();
   const { connector, isConnected } = useAccount();
 
@@ -127,13 +112,51 @@ export const Hero = () => {
               BUIDLer React Component
             </h2>
             <div>
-              <a href="https://app.buidler.etherspot.io" target="_blank">
-                <img
-                  src="/Buidler.png"
-                  className="w-full h-auto"
-                  alt="buidler"
+              {!connectedProvider && (
+                <SignIn
+                  onWeb3ProviderSet={async (web3Provider) => {
+                    if (!web3Provider) {
+                      setConnectedProvider(null);
+                      return;
+                    }
+
+                    const web3 = new Web3(web3Provider as any);
+
+                    // @ts-ignore
+                    setConnectedProvider(web3.currentProvider);
+                  }}
+                  onWeb3AuthInstanceSet={setWeb3AuthInstance}
                 />
-              </a>
+              )}
+              {connectedProvider && (
+                <div>
+                  <Etherspot
+                    provider={connectedProvider}
+                    chainId={chainId}
+                    themeOverride={themeOverride}
+                    onLogout={async () => {
+                      try {
+                        if (isConnected) wagmiDisconnect();
+                        if (connector) await connector.disconnect();
+                      } catch (e) {
+                        //
+                      }
+
+                      try {
+                        if (web3AuthInstance) {
+                          await web3AuthInstance.logout({ cleanup: true });
+                          web3AuthInstance.clearCache();
+                        }
+                      } catch (e) {
+                        //
+                      }
+
+                      setConnectedProvider(null);
+                    }}
+                    showMenuLogout
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
