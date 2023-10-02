@@ -152,7 +152,7 @@ export const Hero = () => {
                         //
                       }
 
-                      setConnectedProvider(null);
+                      window.location.reload();
                     }}
                     showMenuLogout
                   />
