@@ -152,10 +152,11 @@ const SignInOption = styled.div<{ disabled?: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   font-family: "PTRootUIWebMedium", sans-serif;
   color: #fff;
   font-size: 16px;
-  padding: 28px 34px;
+  padding: 28px 0;
   border-radius: 24px;
   border: solid 1.5px #49437d;
   background-color: rgba(71, 64, 120, 0.4);
