@@ -1,12 +1,12 @@
 import React from "react";
-import { configureChains, createClient, mainnet, WagmiConfig } from "wagmi";
+import { configureChains, createConfig, mainnet, WagmiConfig } from "wagmi";
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet],
   [
     infuraProvider({ apiKey: import.meta.env.VITE_APP_INFURA_ID ?? "" }),
@@ -14,7 +14,7 @@ const { chains, provider, webSocketProvider } = configureChains(
   ]
 );
 
-const client = createClient({
+const config = createConfig({
   autoConnect: true,
   connectors: [
     new MetaMaskConnector({ chains }),
@@ -27,17 +27,18 @@ const client = createClient({
     new WalletConnectConnector({
       chains,
       options: {
-        version: "1",
-        qrcode: true,
+        isNewChainsStale: false,
+        projectId: import.meta.env.VITE_APP_WALLET_CONNECT_PROJECT_ID ?? "",
+        showQrModal: true,
       },
     }),
   ],
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 });
 
 const WagmiProvider = ({ children }: { children: React.ReactNode }) => (
-  <WagmiConfig client={client}>{children}</WagmiConfig>
+  <WagmiConfig config={config}>{children}</WagmiConfig>
 );
 
 export default WagmiProvider;
