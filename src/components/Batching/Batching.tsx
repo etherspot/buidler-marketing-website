@@ -68,6 +68,9 @@ export const Batching = () => {
               <p>5 swaps in a single a transaction with 1 click.</p>
             </div>
           </div>
+          <h3 className="text-center text-[20px] mb-16">
+        Please consider the content above as an example of the Transaction batching feature
+        </h3>
         </div>
       </div>
     </div>
