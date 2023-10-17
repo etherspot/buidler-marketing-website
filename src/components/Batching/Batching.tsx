@@ -5,6 +5,9 @@ export const Batching = () => {
         <h2 className="text-center text-[32px] mb-16">
           Transaction batching use-cases
         </h2>
+        <h3 className="text-center text-[20px] mb-16">
+        Please consider the content above as an example of the Transaction batching feature
+        </h3>
         <div className="flex justify-center relative items-start flex-wrap">
           <div className="md:w-1/2 w-full md:border-r-[1px] md:pr-16 border-[#2E2E4A] py-6">
             <h3 className="text-2xl mb-9">Multi-Call Batching</h3>

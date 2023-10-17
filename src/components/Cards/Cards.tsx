@@ -32,8 +32,7 @@ export const Cards = () => {
       </div>
       <div className="w-full relative custom-card flex flex-col">
         <h3 className="text-2xl">
-          Compatible with any Web3 provider (MetaMask, WalletConnect, Torus, and
-          others).
+        Compatible with various Web3 provider (MetaMask, WalletConnect, Torus, and others).
         </h3>
         <div className="flex justify-center items-center flex-wrap gap-x-10 gap-y-6 mt-auto">
           <CardIconNine />
